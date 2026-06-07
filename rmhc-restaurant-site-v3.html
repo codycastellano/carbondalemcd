@@ -1,0 +1,590 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Community & RMHC | Local McDonald's Restaurant</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #fdf7f2;
+      color: #27251F;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: #DA291C; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      background: #DA291C;
+      color: #fff;
+      padding: 0.6rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    .nav-shell {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .logo-lockup {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .logo-lockup img {
+      height: 52px;
+      width: auto;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+    nav a {
+      color: #fff;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.15);
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(6px);
+    }
+    nav a:hover {
+      background: #FFC72C;
+      color: #27251F;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 3rem;
+    }
+
+    .hero {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      padding: 1.75rem 1.5rem;
+      border-radius: 1.25rem;
+      background: radial-gradient(circle at top left, #FFC72C 0, #FFE6A7 30%, #fdf7f2 65%);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.16);
+    }
+    .hero-kicker {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      color: #7a3a10;
+      font-weight: 700;
+    }
+    .hero h1 {
+      font-size: clamp(1.9rem, 3vw, 2.4rem);
+      line-height: 1.15;
+      margin: 0.35rem 0 0.75rem;
+      color: #27251F;
+    }
+    .hero p {
+      max-width: 34rem;
+      font-size: 0.98rem;
+    }
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+      align-items: center;
+    }
+    .btn-primary, .btn-outline {
+      border-radius: 999px;
+      padding: 0.75rem 1.4rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: #DA291C;
+      color: #fff;
+      border-color: #b11f15;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.35);
+    }
+    .btn-primary:hover { background: #b11f15; }
+    .btn-outline {
+      background: rgba(255,255,255,0.1);
+      border-color: #DA291C;
+      color: #DA291C;
+    }
+    .btn-outline:hover { background: #FFC72C; color: #27251F; }
+    .hero-meta {
+      font-size: 0.8rem;
+      color: #7a3a10;
+      margin-top: 0.25rem;
+    }
+
+    .hero-side {
+      background: rgba(255,255,255,0.8);
+      border-radius: 1rem;
+      padding: 1.1rem 1.1rem 1rem;
+      display: grid;
+      gap: 0.85rem;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .hero-stat-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #7a3a10;
+      font-weight: 700;
+    }
+    .hero-stat-main {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #DA291C;
+    }
+    .hero-stat-sub { font-size: 0.86rem; color: #4f3a24; }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+    .hero-badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: #FFE6A7;
+      color: #7a3a10;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    section {
+      margin-top: 2.75rem;
+    }
+    section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #27251F;
+    }
+    section p {
+      font-size: 0.98rem;
+      max-width: 40rem;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .thermo-card {
+      background: #fff;
+      padding: 1.25rem 1.25rem 1.4rem;
+      border-radius: 1.1rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .thermo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .thermo-header h3 { font-size: 1rem; }
+    .thermo-header span { font-size: 0.85rem; color: #666; }
+
+    .thermo-shell {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-end;
+      margin-top: 0.5rem;
+    }
+    .thermometer {
+      position: relative;
+      width: 70px;
+      height: 210px;
+      background: #f3f3f3;
+      border-radius: 999px;
+      border: 2px solid #e0dfdf;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 6px;
+      overflow: hidden;
+    }
+    .thermo-fill {
+      --fill-ratio: 0.35;
+      width: 100%;
+      background: linear-gradient(180deg, #FFC72C 0%, #FFB000 40%, #DA291C 100%);
+      border-radius: 999px;
+      height: calc(var(--fill-ratio) * 100%);
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
+      transition: height 0.7s ease-out;
+    }
+    .thermo-bulb {
+      position: absolute;
+      bottom: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 58px;
+      height: 58px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #fff7d2, #FFC72C 35%, #DA291C 80%);
+      border: 4px solid #e0dfdf;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+
+    .thermo-copy {
+      flex: 1;
+      font-size: 0.9rem;
+    }
+    .thermo-kpi {
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    .thermo-kpi span { color: #DA291C; }
+    .thermo-bar-shell {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: #555;
+    }
+    .thermo-bar {
+      position: relative;
+      height: 0.7rem;
+      border-radius: 999px;
+      background: #f1e4d8;
+      overflow: hidden;
+      margin-bottom: 0.25rem;
+    }
+    .thermo-bar-fill {
+      --fill-ratio: 0.35;
+      position: absolute;
+      inset: 0;
+      width: calc(var(--fill-ratio) * 100%);
+      background: repeating-linear-gradient(135deg, #DA291C 0, #DA291C 4px, #FFC72C 4px, #FFC72C 8px);
+      transition: width 0.7s ease-out;
+    }
+    .last-updated {
+      margin-top: 0.35rem;
+      font-size: 0.78rem;
+      color: #777;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+    .event-card {
+      background: #fff;
+      border-radius: 0.9rem;
+      padding: 1rem 1rem 1.1rem;
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      font-size: 0.9rem;
+    }
+    .event-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: #FFF1D0;
+      color: #7a3a10;
+      margin-bottom: 0.35rem;
+    }
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #DA291C;
+    }
+    .event-title { font-weight: 700; margin-bottom: 0.15rem; }
+    .event-meta { font-size: 0.8rem; color: #666; margin-bottom: 0.3rem; }
+
+    .impact-list {
+      margin-top: 0.75rem;
+      padding-left: 1rem;
+      font-size: 0.95rem;
+    }
+    .impact-list li { margin-bottom: 0.45rem; }
+
+    .feedback-shell {
+      background: #fff;
+      border-radius: 1rem;
+      padding: 1.25rem 1.25rem 1.4rem;
+      margin-top: 1rem;
+      box-shadow: 0 6px 22px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .feedback-shell form {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    label { font-size: 0.88rem; font-weight: 600; }
+    input[type="text"], input[type="email"], select, textarea {
+      border-radius: 0.6rem;
+      border: 1px solid #d6d1cb;
+      padding: 0.55rem 0.7rem;
+      font: inherit;
+      width: 100%;
+      background: #fdfaf7;
+    }
+    textarea { min-height: 120px; resize: vertical; }
+
+    footer {
+      margin-top: 2.75rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      font-size: 0.8rem;
+      color: #666;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding-bottom: 0.5rem;
+    }
+
+    @media (max-width: 720px) {
+      header { padding-inline: 1.1rem; }
+      .nav-shell { flex-direction: column; align-items: flex-start; }
+      nav ul { justify-content: flex-start; }
+      .hero { padding: 1.5rem 1.2rem; }
+      .split { grid-template-columns: minmax(0, 1fr); }
+      .thermo-shell { flex-direction: row; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-shell">
+      <div class="logo-lockup">
+        <!-- Replace the src path below with the path to your uploaded logo file in your repo -->
+        <img src="./assets/muellerfamilymcd.jpg" alt="Mueller Family McDonald's" width="220" height="70" />
+      </div>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#rmhc">RMHC Giving</a></li>
+          <li><a href="#events">Community Events</a></li>
+          <li><a href="#impact">Community Impact</a></li>
+          <li><a href="#feedback">Comments & Praise</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero" aria-labelledby="hero-title">
+      <div>
+        <p class="hero-kicker">Carbondale McDonald's & RMHC</p>
+        <h1 id="hero-title">Turning spare change into nights together for local families.</h1>
+        <p>
+          Our restaurant is proud to support Ronald McDonald House Charities, helping keep families close to the care
+          their children need through Round-Up for RMHC, donation boxes, and community events.
+        </p>
+        <div class="hero-cta-row">
+          <a class="btn-primary" href="#rmhc">See this month's RMHC goal &raquo;</a>
+          <a class="btn-outline" href="#events">View upcoming community nights</a>
+        </div>
+        <p class="hero-meta">Every round-up, Happy Meal, and event makes a real difference for families with ill or injured children.</p>
+      </div>
+      <aside class="hero-side" aria-label="Quick RMHC snapshot">
+        <div>
+          <p class="hero-stat-label">This month's RMHC goal</p>
+          <p class="hero-stat-main" id="goalDisplay">$5,000</p>
+          <p class="hero-stat-sub">Local goal for support to Ronald McDonald House Charities this month.</p>
+        </div>
+        <div>
+          <p class="hero-stat-label">Raised so far</p>
+          <p class="hero-stat-main" id="raisedDisplay">$1,750</p>
+          <p class="hero-stat-sub">From Round-Up for RMHC, donation boxes, and local events.</p>
+        </div>
+        <div class="hero-badges" aria-label="Ways guests can help">
+          <span class="hero-badge">Round-Up at the counter or kiosk</span>
+          <span class="hero-badge">Drop change in RMHC donation boxes</span>
+          <span class="hero-badge">Join our community events</span>
+        </div>
+      </aside>
+    </section>
+
+    <section id="rmhc" aria-labelledby="rmhc-heading">
+      <div class="split">
+        <div>
+          <h2 id="rmhc-heading">How giving at McDonald's supports RMHC families</h2>
+          <p>
+            Ronald McDonald House Charities is a nonprofit organization that helps keep families close to their
+            hospitalized children with housing, meals, and support just steps from the hospital.
+          </p>
+          <p>
+            At McDonald's, guests can support RMHC year-round by rounding up their total to the nearest dollar, dropping
+            spare change in RMHC Donation Boxes, and participating in in-restaurant fundraisers.
+          </p>
+          <ul class="impact-list">
+            <li><strong>Round-Up for RMHC:</strong> Ask to round your total to the next dollar; the difference is donated to RMHC.</li>
+            <li><strong>Donation Boxes:</strong> Place coins or cash in the RMHC Donation Boxes in our lobby and drive-thru.</li>
+            <li><strong>Happy Meals & specials:</strong> A portion from select menu items and events goes to RMHC through local programs.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="thermo-card" aria-labelledby="thermo-heading">
+            <div class="thermo-header">
+              <h3 id="thermo-heading">Monthly RMHC Thermometer</h3>
+              <span id="thermoGoalLabel">Goal: $5,000</span>
+            </div>
+            <div class="thermo-shell">
+              <div class="thermometer" aria-hidden="true">
+                <!--
+                  To update the fill level, change the --fill-ratio value below.
+                  Example: current = 2500, goal = 5000 => 2500/5000 = 0.5
+                -->
+                <div class="thermo-fill" id="thermoFill" style="--fill-ratio:0.35;"></div>
+                <div class="thermo-bulb"></div>
+              </div>
+              <div class="thermo-copy">
+                <p class="thermo-kpi">Current total: <span id="currentTotalText">$1,750</span></p>
+                <p>
+                  When you update this thermometer, edit the amounts and fill value in your HTML file so guests always
+                  see accurate information that matches your official RMHC reports.
+                </p>
+                <div class="thermo-bar-shell">
+                  <div class="thermo-bar" aria-hidden="true">
+                    <div class="thermo-bar-fill" id="thermoBarFill" style="--fill-ratio:0.35;"></div>
+                  </div>
+                  <div class="last-updated" id="lastUpdated">Last updated: June 1, 2026</div>
+                </div>
+              </div>
+            </div>
+            <p style="font-size:0.78rem;color:#777;margin-top:0.7rem;max-width:30rem;">
+              Only the restaurant owner/manager with access to this website's code should change these totals, so they
+              match your verified RMHC donation records.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="events" aria-labelledby="events-heading">
+      <h2 id="events-heading">Community events at our restaurant</h2>
+      <p>
+        Throughout the year we host family-friendly events, trivia nights, and special Round-Up for RMHC weekends to bring
+        the community together and raise support for local families.
+      </p>
+      <div class="events-grid" aria-label="Sample event ideas">
+        <article class="event-card">
+          <div class="event-tag"><span class="pill-dot"></span> McDonald's Family Night</div>
+          <h3 class="event-title">Weekly Family Night</h3>
+          <p class="event-meta">Wednesdays &middot; 4:00 &ndash; 7:00 p.m.</p>
+          <p>
+            Games, coloring sheets, and fun activities for kids. A simple, welcoming night for families to enjoy dinner
+            together in the restaurant.
+          </p>
+        </article>
+        <article class="event-card">
+          <div class="event-tag"><span class="pill-dot"></span> Round-Up for RMHC Weekend</div>
+          <h3 class="event-title">Round-Up for the House</h3>
+          <p class="event-meta">Once per quarter &middot; All day</p>
+          <p>
+            A focused weekend where our crew invites every guest to round-up, with in-restaurant signage and updates to
+            show how much we raise for RMHC.
+          </p>
+        </article>
+        <article class="event-card">
+          <div class="event-tag"><span class="pill-dot" style="background:#FFC72C;"></span> McTrivia Night</div>
+          <h3 class="event-title">McTrivia Night</h3>
+          <p class="event-meta">Monthly &middot; Thursday evenings</p>
+          <p>
+            A fun, family-friendly trivia night with questions about pop culture, sports, and McDonald's history. Guests
+            can choose to round-up or donate extra to support RMHC.
+          </p>
+        </article>
+        <article class="event-card">
+          <div class="event-tag"><span class="pill-dot" style="background:#27742d;"></span> Community Service Day</div>
+          <h3 class="event-title">Crew & Manager Service Day</h3>
+          <p class="event-meta">Quarterly &middot; Off-site</p>
+          <p>
+            Our team volunteers together in the community or at a local Ronald McDonald House, helping with projects like
+            cleaning, organizing, or meal preparation.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="impact" aria-labelledby="impact-heading">
+      <h2 id="impact-heading">Community impact & what your support means</h2>
+      <p>
+        When you visit our restaurant, round-up your total, or drop change in an RMHC Donation Box, you're helping give
+        families a place to stay, a warm meal, and support when a child is in the hospital.
+      </p>
+      <ul class="impact-list">
+        <li>Families have a comfortable place to sleep and eat near the hospital when their child is receiving care.</li>
+        <li>Parents can stay close to their child instead of traveling long distances back and forth each day.</li>
+        <li>Local crews and managers have opportunities to volunteer and give back through RMHC and community events.</li>
+      </ul>
+      <p style="margin-top:0.75rem;font-size:0.9rem;color:#555;">
+        For more information about Ronald McDonald House Charities and how they support families, visit the official RMHC
+        website or speak with a manager in our restaurant.
+      </p>
+    </section>
+
+    <section id="feedback" aria-labelledby="feedback-heading">
+      <h2 id="feedback-heading">Comments, concerns & praises</h2>
+      <p>
+        We welcome feedback about your experience in our restaurant and our community and RMHC efforts. Please avoid
+        sharing private health details or personal information about children or families.
+      </p>
+      <div class="feedback-shell">
+        <form>
+          <div>
+            <label for="fbType">Type of feedback</label>
+            <select id="fbType" name="fbType">
+              <option value="praise">Praise / Thank you</option>
+              <option value="comment">General comment</option>
+              <option value="concern">Concern</option>
+            </select>
+          </div>
+          <div>
+            <label for="fbMessage">Your message</label>
+            <textarea id="fbMessage" name="fbMessage" placeholder="Tell us about your visit, event idea, or RMHC support story..."></textarea>
+          </div>
+          <div>
+            <label for="fbName">Name (optional)</label>
+            <input type="text" id="fbName" name="fbName" />
+          </div>
+          <div>
+            <label for="fbContact">Preferred contact (optional)</label>
+            <input type="text" id="fbContact" name="fbContact" placeholder="Phone or email" />
+          </div>
+          <button type="submit" class="btn-primary">Submit feedback</button>
+          <p style="font-size:0.78rem;color:#777;max-width:32rem;">
+            This form is for local restaurant feedback only and does not replace contacting the hospital or RMHC directly
+            for urgent family needs.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 Local McDonald's Restaurant &middot; Carbondale, PA</p>
+      <p>Ronald McDonald House Charities names, logos, and related marks are used in reference to RMHC programs and remain trademarks of their respective owners.</p>
+    </footer>
+  </main>
+</body>
+</html>
